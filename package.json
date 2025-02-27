@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@salesforce/sfdx-lwc-jest": "^7.0.1",
+    "eslint": "^8.57.1"
+  },
+  "scripts": {
+    "test:unit": "sfdx-lwc-jest"
+  },
+  "dependencies": {
+    "lwc": "^8.12.6"
+  }
+}

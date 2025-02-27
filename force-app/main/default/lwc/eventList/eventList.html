@@ -1,0 +1,64 @@
+<template>
+    <div class="card-container">
+        <template if:true={isLoading}>
+            <div class="spinner-overlay">
+                <p class="loading-text">Loading...</p>
+                <lightning-spinner 
+                    alternative-text="Loading..." 
+                    size="large">
+                </lightning-spinner>
+            </div>
+        </template>
+
+        <div class="button-container slds-grid slds-grid_vertical-align-center">
+            <lightning-button-icon class="refresh-button slds-m-left_small" 
+                icon-name="utility:refresh" 
+                alternative-text="Refresh"
+                title="Refresh"
+                onclick={handleRefreshData}>
+            </lightning-button-icon>
+            <lightning-button class="report-button" 
+                label="Events report" 
+                title="Events report" 
+                variant="brand"
+                onclick={handleOpenReportEvents}>
+            </lightning-button>            
+        </div>
+
+        <template if:false={isEventsCatalog}>
+            <p class="slds-text-color_weak slds-p-around_medium">No data available...</p>
+        </template>
+        <template if:true={isEventsCatalog}>
+            <template for:each={eventsCatalog} for:item="event" for:index="index">
+                <lightning-layout-item key={event.Id} size="12" class="slds-m-bottom_small">
+                    <lightning-card class="custom-card" title={event.Name} style="max-width: 300px;">
+                        <div class="card-content slds-grid slds-grid_align-center slds-p-horizontal_xxx-small">
+                            <!-- Left -->
+                            <div class="slds-col slds-size_1-of-2 slds-p-around_xxx-small">
+                                <p><strong>Type:</strong> {event.Type_of_event__c}</p>
+                                <p><strong>Max. participants:</strong> {event.MaxAttendees__c}</p>
+                                <p><strong>Available places:</strong> {event.AvailableSeats__c}</p>
+                            </div>
+                            <!-- Right -->
+                            <div class="slds-col slds-size_1-of-2 slds-p-around_xxx-small">
+                                <p><strong>Date:</strong> {event.Date__c}</p>
+                                <p><strong>Time:</strong> {event.formatDateTime}</p>
+                                <p><strong>Location:</strong> {event.Location__c}</p>
+                            </div>
+                        </div>
+                        <div class="slds-m-around_xxx-small slds-align_absolute-center">
+                            <lightning-button class="slds-m-top_xxx-small" 
+                                label="Registration" 
+                                data-id={event.Id} 
+                                data-name={event.Name} 
+                                data-date={event.Date__c}
+                                onclick={handleRegister}>
+                            </lightning-button>
+                        </div>
+                    </lightning-card>
+                </lightning-layout-item>
+            </template>
+        </template>
+
+    </div>
+</template>

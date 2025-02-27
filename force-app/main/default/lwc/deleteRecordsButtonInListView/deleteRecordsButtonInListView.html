@@ -1,0 +1,31 @@
+<template>
+    <div class="slds-p-around_small">
+        <lightning-button 
+            label="Return to List View"
+            icon-name="utility:back"
+            icon-position="left"
+            variant="brand-outline"
+            onclick={handleClose}>
+        </lightning-button>
+    </div>
+    
+    <div class="slds-grid slds-grid_align-center slds-size_1-of-1" style="height: 100vh;">        
+        <div class="slds-text-align_center slds-m-top_large">            
+            <template if:true={isWait}>
+                <p class="slds-text-color_weak slds-p-around_medium">Please wait...</p>
+            </template>
+            <template if:false={isWait}>
+                <template if:true={textMessenger}>
+                    <p class="slds-text-color_weak slds-p-around_medium">{textMessenger}</p>
+                </template>
+                <template if:false={isEmptyList}>
+                    <lightning-button 
+                        label="Delete selected" 
+                        variant="destructive" 
+                        onclick={handleDelete}>
+                    </lightning-button>
+                </template>
+            </template>
+        </div>
+    </div>
+</template>

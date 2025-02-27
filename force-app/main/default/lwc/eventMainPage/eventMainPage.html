@@ -1,0 +1,15 @@
+<template>
+    <template if:false={isEventSelected}>
+        <c-event-list 
+            onregisternewevent={handleEventRegister}>
+        </c-event-list>
+    </template>
+    <template if:true={isEventSelected}>
+        <c-event-registration 
+            event-id={selectedEvent.id} 
+            event-name={selectedEvent.name} 
+            event-date={selectedEvent.date}
+            onclose={handleClose}>
+        </c-event-registration>
+    </template>
+</template>

@@ -1,0 +1,89 @@
+<template>
+    <div class="registration-fullscreen">
+        <lightning-card title="Registration for the event:" class="registration-card">
+            <lightning-button-icon class="close-button"                
+                icon-name="utility:close" 
+                alternative-text="Close" 
+                variant="bare"                 
+                onclick={handleClose}>
+            </lightning-button-icon>
+            
+            <template if:true={isLoading}>
+                <div class="spinner-overlay">
+                    <lightning-spinner alternative-text="Loading..." size="large"></lightning-spinner>
+                </div>
+            </template>
+
+            <div class="card-content">
+                <div class="registration-details">
+                    <p><strong>Event:</strong> {eventName}</p>
+                    <p><strong>Date:</strong> {eventDate}</p>
+                </div>
+                <template if:true={textSuccess}>
+                    <div class="success-message">{textSuccess}</div>
+                </template>
+                <template if:false={textSuccess}>
+                    <div class="form-container">
+                        <div class="form-header custom-form-header">
+                            <h2 class="form-title">Your contact information</h2>
+                            <template if:true={isUserLoggedIn}>
+                                <lightning-button-icon class="profile-button"  
+                                    icon-name="utility:adduser"
+                                    alternative-text="Fill from my profile" 
+                                    variant="border-filled" 
+                                    size="x-small"                                    
+                                    onclick={handleLoadUserData}>
+                                </lightning-button-icon>
+                            </template>
+                        </div>
+                        <div class="form-fields slds-grid slds-wrap slds-gutters">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input 
+                                    label="Last Name" 
+                                    type="text" 
+                                    value={contactFields.lastName}                                     
+                                    required
+                                    message-when-value-missing="Last Name is required"
+                                    onchange={handleContactLastNameChange}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input 
+                                    label="First Name" 
+                                    type="text" 
+                                    value={contactFields.firstName}
+                                    onchange={handleContactFirstNameChange}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input 
+                                    label="Phone" 
+                                    type="tel" 
+                                    value={contactFields.phone}
+                                    onchange={handleContactPhoneChange}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input 
+                                    label="E-mail" 
+                                    type="email"
+                                    value={contactFields.email}                                     
+                                    required
+                                    message-when-value-missing="E-mail is required"
+                                    onchange={handleContactEmailChange}>
+                                </lightning-input>
+                            </div>
+                        </div>
+                        <div class="form-footer slds-text-align_center">
+                            <lightning-button 
+                                label="Confirm Registration" 
+                                variant="brand"
+                                onclick={handleSubmit}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>
