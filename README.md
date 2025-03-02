@@ -1,5 +1,5 @@
 # Registration for Events and Meetings App
-The application provides the ability to register users for events and meetings within the Salesforce system..
+The application provides the ability to register users for events and meetings within the Salesforce system.
 
 ## Technologies which are used in App
 **Apex:** Backend development *(SOQL, DML, Triggers, Queueable, Apex-Tests)*.<br>
@@ -9,7 +9,7 @@ The application provides the ability to register users for events and meetings w
 
 ## Business Process of App
 **Selection of an event or meeting:<br>**
-The user visits the main page of the application and look through list of upcoming events and meetings.
+The user visits the main page of the application and looks through a list of upcoming events and meetings.
 ![image](https://github.com/user-attachments/assets/d63aada3-9d7c-4616-b0ea-42d7abd602e4)
 <br>
 <br>
@@ -21,7 +21,7 @@ After selecting an event, the user navigates to the registration page and fills 
 <br>
 <br>
 **Creating a record in Salesforce:<br>**
-Upon successful registration, a new registration record is created, linking the user to the selected event or meeting.
+After successful registration, a new registration record is created, linking the user to the selected event or meeting.
 ![image](https://github.com/user-attachments/assets/7e58a2e5-e6fc-41f2-b0dc-295c85ad846d)
 <br>
 <br>
